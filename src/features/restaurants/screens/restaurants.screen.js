@@ -1,16 +1,14 @@
 import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { FlatList } from "react-native";
-import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
+import { ActivityIndicator, Colors } from "react-native-paper";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { Search } from "../components/search.component";
 
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -33,9 +31,7 @@ export const RestaurantsScreen = () => {
 
   return (
     <SafeArea>
-      <SearchContainer>
-        <Searchbar />
-      </SearchContainer>
+      <Search />
       {isLoading && (
         <LoadingContainer style={{}}>
           <Loading size={50} animating={true} color={Colors.red800} />
